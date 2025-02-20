@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { FileCompressor } from './FileCompressor';
 
-const MAX_PROCESSES = 20;
+const MAX_PROCESSES = 10;
 const MAX_RETRY_ATTEMPTS = 3;
 const BLOCKS_PER_FOLDER = 10000;
 const VOTE_PUBKEY = new PublicKey('Vote111111111111111111111111111111111111111');

@@ -3,13 +3,25 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const args = process.argv.slice(2);
+if (args.length < 2) {
+  console.error("Usage: node index.js <startSlot> <endSlot>");
+  process.exit(1);
+}
+
+const startSlot = parseInt(args[0], 10);
+const endSlot = parseInt(args[1], 10);
+
+if (isNaN(startSlot) || isNaN(endSlot)) {
+  console.error("startSlot and endSlot must be valid numbers");
+  process.exit(1);
+}
+
 const endpoints = [
   process.env.RPC_ENDPOINT_1 || 'https://api.mainnet-beta.solana.com',
   process.env.RPC_ENDPOINT_2 || 'https://api.mainnet-beta.solana.com',
   process.env.RPC_ENDPOINT_3 || 'https://api.mainnet-beta.solana.com',
 ];
-const startSlot = 321361273;
-const endSlot = 321381277;
 
 const rpcClients = endpoints.map(endpoint => new RpcClient(endpoint));
 
