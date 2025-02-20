@@ -31,7 +31,7 @@ export class BlockFetcher {
       const config: GetVersionedBlockConfig = {
         maxSupportedTransactionVersion: 0,
         rewards: false,
-        transactionDetails: 'accounts'
+        transactionDetails: 'full'
       };
       const block = await this.connection.getParsedBlock(slot, config);
       if (block) {
