@@ -71,7 +71,7 @@ async function monitorData() {
 }
 
 function handleData(data: any): void {
-  console.log('Received data:', data.block.blockHeight.blockHeight);
+  console.log('Received data:', data.block.slot);
 }
 
 monitorData().catch(console.error);
