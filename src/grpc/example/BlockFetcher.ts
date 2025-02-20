@@ -46,7 +46,7 @@ async function monitorData() {
     blocks: {
       blockSubscription: {
         accountInclude: [],
-        includeTransactions: true,
+        includeTransactions: false,
       },
     },
     accounts: {},
