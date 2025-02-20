@@ -1,0 +1,12 @@
+# files
+block_json
+src/grpc/block_json
+
+# ts dist
+dist
+
+# node_modules
+node_modules
+
+# env variables
+.env
