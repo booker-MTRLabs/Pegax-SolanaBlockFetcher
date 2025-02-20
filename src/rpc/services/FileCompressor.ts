@@ -13,9 +13,7 @@ export class FileCompressor {
     const destination = createWriteStream(zipPath);
 
     await pipelineAsync(source, gzip, destination);
-    console.log(`File ${filePath} compressed to ${zipPath}`);
 
     await fs.unlink(filePath);
-    console.log(`File ${filePath} deleted after compression`);
   }
 }
