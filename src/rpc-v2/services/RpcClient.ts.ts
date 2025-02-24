@@ -13,7 +13,7 @@ export class RpcClient {
     this.blockFetcher = new BlockFetcher(this.connection);
   }
 
-  async fetchBlocks(startSlot: number, endSlot: number): Promise<void> {
-    await this.blockFetcher.fetchAndPrintBlocks(startSlot, endSlot);
+  async fetchBlock(slot: number): Promise<void> {
+    await this.blockFetcher.fetchBlockWithRetry(slot);
   }
 }

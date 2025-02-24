@@ -17,21 +17,13 @@ export class BlockFetcher {
     this.fileCompressor = new FileCompressor();
   }
 
-  async fetchAndPrintBlocks(startSlot: number, endSlot: number): Promise<void> {
-    const slots = Array.from({ length: endSlot - startSlot + 1 }, (_, i) => startSlot + i);
-
-    for (let i = 0; i < slots.length; i += MAX_PROCESSES) {
-      const chunk = slots.slice(i, i + MAX_PROCESSES);
-      await Promise.all(chunk.map(slot => this.fetchBlockWithRetry(slot)));
-    }
-  }
-
-  private async fetchBlockWithRetry(slot: number, attempt = 1): Promise<void> {
+  public async fetchBlockWithRetry(slot: number, attempt = 1): Promise<void> {
     try {
       const config: GetVersionedBlockConfig = {
         maxSupportedTransactionVersion: 0,
         rewards: false,
         transactionDetails: 'accounts',
+        commitment: 'confirmed'
       };
       const block = await this.connection.getParsedBlock(slot, config);
       if (block) {
